@@ -1,0 +1,28 @@
+<script>
+  import Navbar from "../Navbar.svelte";
+
+
+</script>
+<Navbar/>
+<main class='min-h-screen bg-gradient-to-r from-purple-400 via-purple-200 to-pink-300'>
+
+    <div class="flex ">
+        <div class="w-1/2 h-screen m-0 p-0">
+            <img class='h-full m-5 '  src='https://img.freepik.com/free-vector/content-structure-concept-illustration_114360-5252.jpg?w=740&t=st=1689740739~exp=1689741339~hmac=a915e94df99be414c360341f8d625adc97dddf7b323192ba06816b90a1a8b9af' alt='developer'/>
+        </div>
+        <div class=" flex flex-col items-center justify-center">
+            <h2 class="text-5xl font-semibold mt-"> Be A part of this program</h2>
+            <h3 class="text-1xl mt-3">Learn Earn Grow Glow</h3>
+        </div>  
+        
+      
+    </div>
+</main>
+
+
+
+
+
+<style>
+
+</style>
