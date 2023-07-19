@@ -1,0 +1,25 @@
+<script>
+  import Navbar from "./Navbar.svelte";
+
+</script>
+
+
+<main class='min-h-screen bg-gradient-to-r from-purple-400 via-purple-200 to-pink-300' >
+    <Navbar/>
+   <div class="w-full h-screen bg-no-repeat bg-cover bg-center bg-fixed opacity-50" 
+      style="background-image:url('https://images.pexels.com/photos/3224156/pexels-photo-3224156.jpeg');"> 
+      <div class=" pt-20 text-center ">
+        <h2 class="text-5xl font-semibold text-black"> Be A Part of this Exclusive Program! </h2>
+        <h3 class="text-1xl mt-5">Explore and Explode</h3>
+        <button class="border border-gray-800 rounded-full p-2 mt-5 hover:bg-purple-300">Lets get Started</button>
+    </div> 
+   </div>
+</main>
+
+
+
+
+
+<style>
+
+</style>
