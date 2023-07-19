@@ -1,0 +1,94 @@
+<script>
+  import Navbar from "../Navbar.svelte";
+
+
+
+    let password = '';
+    let confirmPassword = '';
+    let firstName = '';
+    let lastName = '';
+    let email = '';
+    let termsAccepted = false;
+    let regSucess =false;
+  
+    function handleSubmit() {
+      
+      if (!firstName || !lastName || !email || !password || !confirmPassword || !termsAccepted) {
+        alert('Please fill the form');
+    
+      }
+      if (password !== confirmPassword) {
+        alert('Password do not match!');      
+      }
+      else{
+        regSucess=true; 
+        window.location.href='/login';
+      }
+      
+      
+  
+      alert('Registration successful - u will be directed to the login page!');
+      // reset form fields
+
+    //   password = '';
+    //   confirmPassword = '';
+    //   firstName = '';
+    //   lastName = '';
+    //   email = '';
+    //   termsAccepted = false;
+   
+    
+    }
+     
+    
+    
+
+  </script>
+  <Navbar/>
+  <main class="min-h-screen py-40 bg-gradient-to-r from-purple-400 via-purple-200 to-pink-300">
+    <div class='container mx-auto'>
+      <div class='w-10/12 md:w-11/12 flex flex-col sm:flex-row bg-white rounded-xl mx-auto shadow-lg overflow-hidden'>
+        <!-- image -->
+        <div class="w-full md:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-center bg-cover bg-pink-200 border-1" style="background-image: url('./images/reg.jpeg');">
+          <h1 class='text-3xl mb-3'>Welcome Folks!!</h1>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore nostrum alias praesentium nemo eos neque quisquam sunt cupiditate iste, cum delectus hic doloribus corporis, reprehenderit corrupti voluptatibus quasi pariatur officiis.
+              <a href='#' class="text-purple-500 font-semibold underline">Learn more</a>
+            </p>
+          </div>
+        </div>
+        <!-- input box -->
+        <div class="w-full md:w-1/2 py-16 px-12">
+          <h2 class="text-3xl mb-4">Register</h2>
+          <p class='mb-4'>
+            CREATE your account here, it's free!!
+          </p>
+          <form on:submit|preventDefault={handleSubmit} method='post'> 
+            <div class="grid grid-cols-2 gap-5">
+              <input type='text' placeholder="Firstname" bind:value={firstName} required class="border border-gray-400 py-1 px-2 focus:outline-none focus:border-purple-500" />
+              <input type='text' placeholder="surname" bind:value={lastName} required class="border border-gray-400 py-1 px-2 focus:outline-none focus:border-purple-500" />
+            </div>
+            <div class="mt-5">
+              <input type='email' placeholder="Emai Id" bind:value={email} required class="border border-gray-400 py-1 px-2 w-full focus:outline-none focus:border-purple-500" />
+            </div>
+            <div class="mt-5">
+              <input type='password' id="password" bind:value={password} placeholder="Password" required class="border border-gray-400 py-1 px-2 w-full focus:outline-none focus:border-purple-500" />
+            </div>
+            <div class="mt-5">
+              <input type='password' id="confirmPassword" bind:value={confirmPassword} placeholder="Confirm Password" required class="border border-gray-400 py-1 px-2 w-full focus:text-purple-300" />
+            </div>
+            <div class='mt-5'>
+              <input type='checkbox' bind:checked={termsAccepted} class='border border-gray-400 focus:outline-none focus:border-purple-500'>
+              <span>I accept the <a href='#' class="text-purple-500 font-semibold hover:text-purple-300">Terms and conditions</a> & <a href="#" class="text-purple-500 font-semibold hover:text-purple-300">Privacy and Policy</a></span>
+            </div>
+            <div class="mt-5"><a href='/login' class="text-purple-500 underline hover:text-purple-300">Already have an account!</a></div>
+            <div class="mt-5">
+              <button class='w-full bg-purple-500 py-3 text-center text-white hover:bg-purple-300 hover:text-purple-700'>Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  
