@@ -1,0 +1,72 @@
+<script>
+    import { onMount } from "svelte";
+    import Navbar from "../Navbar.svelte";
+
+    let searchQuery = '';
+  
+  /**
+   * @type {any[]}
+   */
+  const items = [  ];
+
+  // Function to filter items based on search query
+  function filterItems() {
+    return items.filter(item => item.toLowerCase().includes(searchQuery.toLowerCase()));
+  }
+  
+ 
+          /**
+   * @type {any[]}
+   */
+          let posts =[];
+          onMount(async()=>{
+            posts=await getPosts();
+          });
+
+          const getPosts = async()=>{
+              const res = await fetch("https://newsapi.org/v2/everything?domains=wsj.com&apiKey=9da73477ea734b2db67832d4dd448383")
+              const data = await res.json();
+              const articles = data.articles
+              console.log(articles)
+              const filteredData = articles.slice(0,21);
+              return filteredData;
+          };
+
+  
+  </script>
+  <Navbar/>
+  <main class="bg-gray-200 min-h-screen py-8">
+    <div class='p-4'>
+        <div class="max-w-lg mx-auto">
+            <div class="relative">
+              <input type="text" class="w-full py-2 px-4 rounded-lg border focus:outline-none focus:border-blue-500" placeholder="Search" bind:value={searchQuery}>
+              <svg class="h-6 w-6 text-gray-500 absolute top-3 right-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 9l3 3m0 0l-3 3m3-3H9"></path>
+              </svg>
+            </div>
+            <ul class="mt-4">
+              {#each filterItems() as item}
+                <li class="py-2 border-b">{item}</li>
+              {/each}
+            </ul>
+          </div>
+    </div>
+    <div class="container mx-auto">
+      <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <!-- Assuming 'posts' is an array of objects with 'title' and 'urlToImage' properties -->
+        {#each posts as {title, urlToImage,url}}
+          <div class="bg-white rounded-lg p-4 shadow-md">
+            <img src={urlToImage} alt={title} class="w-full h-40 object-cover rounded-t-lg">
+            <p class="text-lg font-semibold mt-4">{title}</p>
+            <a href={url} target='blanket' class='text-purple-300'>Read Me</a>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </main>
+  
+  
+  
+  <style>
+  
+  </style>
